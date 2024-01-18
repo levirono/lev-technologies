@@ -1,0 +1,129 @@
+[
+    {
+      "name": "Item 1",
+      "description": "Description for Item 1",
+      "price": 19.99,
+      "image": "xiaomi.jpg"
+    },
+    {
+      "name": "Google pixel 7 pro",
+      "description": "GOOGLE PIXEL 7 PRO",
+      "price": 29.99,
+      "image": "./pixel.jpg"
+    },
+    {
+      "name": "Item 3",
+      "description": "Description for Item 3",
+      "price": 14.99,
+      "image": "./tabs9.jpg"
+    },
+    {
+      "name": "Item 4",
+      "description": "Description for Item 4",
+      "price": 24.99,
+      "image": "fc1.png"
+    },
+    {
+      "name": "Item 5",
+      "description": "Description for Item 5",
+      "price": 34.99,
+      "image": "fc2.png"
+    },
+    {
+      "name": "Item 6",
+      "description": "Description for Item 6",
+      "price": 39.99,
+      "image": "fc3.png"
+    },
+    {
+      "name": "Item 7",
+      "description": "Description for Item 7",
+      "price": 49.99,
+      "image": "item7.jpg"
+    },
+    {
+      "name": "Item 8",
+      "description": "Description for Item 8",
+      "price": 54.99,
+      "image": "item8.jpg"
+    },
+    {
+      "name": "Item 9",
+      "description": "Description for Item 9",
+      "price": 19.99,
+      "image": "item9.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item ghjk0",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 10",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    },
+    {
+      "name": "Item 1dftgyhuio",
+      "description": "Description for Item 10",
+      "price": 29.99,
+      "image": "item10.jpg"
+    }
+  ]
+  

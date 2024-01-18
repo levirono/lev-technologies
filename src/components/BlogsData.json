@@ -1,0 +1,29 @@
+[
+    {
+      "title": "Samsung Unpacking Event: A Glimpse into the Future",
+      "date": "March 10, 2024",
+      "content": [
+        {
+          "type": "text",
+          "text": "Samsung, the tech giant, hosted an extraordinary unpacking event that left the audience in awe. The event, held on March 10, 2024, showcased the latest innovations and cutting-edge technology the company has been working on."
+        },
+        {
+          "type": "image",
+          "src": "../images/Untitled.jpg",
+          "alt": "Samsung Unpacking Event",
+          "caption": "Caption for Image 1"
+        },
+        {
+          "type": "text",
+          "text": "The stage was set with a futuristic design, and the audience eagerly awaited the unveiling of the newest Samsung products. The event featured a diverse range of devices, including the latest smartphones, smart home gadgets, and innovative wearables."
+        },
+        
+        {
+            "type": "text",
+            "text": "The stage was set with a futuristic design, and the audience eagerly awaited the unveiling of the newest Samsung products. The event featured a diverse range of devices, including the latest smartphones, smart home gadgets, and innovative wearables."
+          }
+      ]
+    }
+    
+  ]
+  

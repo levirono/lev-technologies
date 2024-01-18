@@ -1,0 +1,38 @@
+{
+    "name": "Samsung Galaxy S22 Ultra",
+    "images": [
+      "./images/Untitled.jpg",
+      "path/to/image2.jpg",
+      "path/to/image3.jpg"
+    ],
+    "categories": {
+      "Physical Size": {
+        "Screen": "6.8 inches"
+      },
+      "Material": "Glass and Metal",
+      "Width": "76.4 mm",
+      "Resolution": "3200 x 1440 pixels",
+      "Technology": "Dynamic AMOLED",
+      "Platform": {
+        "OS": "Android 12",
+        "Processor": "Exynos 2200",
+        "GPU": "Mali-G710",
+        "ultra":"gh"
+      },
+      "Cameras": {
+        "Front": "40 MP",
+        "Rear": "108 MP + 12 MP + 12 MP + 8 MP"
+      },
+      "Connections": "5G, Wi-Fi 6, Bluetooth 5.2, USB-C",
+      "Sensors": "Fingerprint (under display), Face ID",
+      "Battery and Charging": "6000 mAh, Fast charging, Wireless charging",
+      "Color": "Phantom Black",
+      "Price": "$1,199.99",
+
+      "misc":{
+        "dagger":"liht",
+        "blunder":"mates"
+      }
+    }
+  }
+  
