@@ -1,9 +1,11 @@
 {
     "name": "Samsung Galaxy S22 Ultra",
     "images": [
-      "./images/Untitled.jpg",
-      "path/to/image2.jpg",
-      "path/to/image3.jpg"
+      "S24u.png",
+      "s2u2.jpg",
+      "s24u3.jpg",
+      "s24u3.jpg"
+
     ],
     "categories": {
       "Physical Size": {

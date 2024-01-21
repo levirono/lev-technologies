@@ -9,13 +9,19 @@
         },
         {
           "type": "image",
-          "src": "../images/Untitled.jpg",
+          "src": "s24u.png",
           "alt": "Samsung Unpacking Event",
           "caption": "Caption for Image 1"
         },
         {
           "type": "text",
           "text": "The stage was set with a futuristic design, and the audience eagerly awaited the unveiling of the newest Samsung products. The event featured a diverse range of devices, including the latest smartphones, smart home gadgets, and innovative wearables."
+        },
+        {
+          "type": "image",
+          "src": "s24u3.jpg",
+          "alt": "Samsung Unpacking Event",
+          "caption": "new look"
         },
         
         {
