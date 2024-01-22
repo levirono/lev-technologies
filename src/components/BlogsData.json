@@ -1,35 +1,75 @@
 [
-    {
-      "title": "Samsung Unpacking Event: A Glimpse into the Future",
-      "date": "March 10, 2024",
-      "content": [
-        {
-          "type": "text",
-          "text": "Samsung, the tech giant, hosted an extraordinary unpacking event that left the audience in awe. The event, held on March 10, 2024, showcased the latest innovations and cutting-edge technology the company has been working on."
-        },
-        {
-          "type": "image",
-          "src": "s24u.png",
-          "alt": "Samsung Unpacking Event",
-          "caption": "Caption for Image 1"
-        },
-        {
-          "type": "text",
-          "text": "The stage was set with a futuristic design, and the audience eagerly awaited the unveiling of the newest Samsung products. The event featured a diverse range of devices, including the latest smartphones, smart home gadgets, and innovative wearables."
-        },
-        {
-          "type": "image",
-          "src": "s24u3.jpg",
-          "alt": "Samsung Unpacking Event",
-          "caption": "new look"
-        },
-        
-        {
-            "type": "text",
-            "text": "The stage was set with a futuristic design, and the audience eagerly awaited the unveiling of the newest Samsung products. The event featured a diverse range of devices, including the latest smartphones, smart home gadgets, and innovative wearables."
-          }
-      ]
-    }
-    
-  ]
-  
+  {
+    "id": 1,
+    "title": "Apple's Latest Innovation: Unveiling the Future",
+    "date": "February 15, 2024",
+    "content": [
+      {
+        "type": "text",
+        "text": "Apple recently hosted a groundbreaking event, unveiling its latest innovations and setting the stage for the future of technology. The event, held on February 15, 2024, showcased a range of cutting-edge products that left the audience in anticipation."
+      },
+      {
+        "type": "image",
+        "src": "apple_event.jpg",
+        "alt": "Apple Event",
+        "caption": "Excitement at the Apple Event"
+      },
+      {
+        "type": "text",
+        "text": "The highlight of the event was the introduction of the next-generation iPhone, featuring advanced features and a sleek design. Apple also showcased updates to its Mac lineup, iPads, and other accessories, leaving tech enthusiasts eager to experience the future of Apple technology."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Samsung Unpacking Event: A Glimpse into the Future",
+    "date": "March 10, 2024",
+    "content": [
+      {
+        "type": "text",
+        "text": "Samsung, the tech giant, hosted an extraordinary unpacking event that left the audience in awe. The event, held on March 10, 2024, showcased the latest innovations and cutting-edge technology the company has been working on."
+      },
+      {
+        "type": "image",
+        "src": "s24u.png",
+        "alt": "Samsung Unpacking Event",
+        "caption": "Caption for Image 1"
+      },
+      {
+        "type": "text",
+        "text": "Exciting new features were revealed, including advancements in camera technology, display innovations, and improvements to user experience. Samsung's commitment to pushing the boundaries of technology was evident throughout the event."
+      },
+      {
+        "type": "image",
+        "src": "s24u3.jpg",
+        "alt": "Samsung Unpacking Event",
+        "caption": "New Look"
+      },
+      {
+        "type": "text",
+        "text": "The stage was set with a futuristic design, and the audience eagerly awaited the unveiling of the newest Samsung products. The event featured a diverse range of devices, including the latest smartphones, smart home gadgets, and innovative wearables."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Google's Groundbreaking Announcement: Shaping the Digital Landscape",
+    "date": "April 5, 2024",
+    "content": [
+      {
+        "type": "text",
+        "text": "Google made waves in the tech industry with its recent announcement, unveiling plans that will shape the digital landscape for years to come. The announcement, made on April 5, 2024, revealed ambitious projects and initiatives aimed at revolutionizing various aspects of technology."
+      },
+      {
+        "type": "image",
+        "src": "google_announcement.jpg",
+        "alt": "Google Announcement",
+        "caption": "Innovation at Google"
+      },
+      {
+        "type": "text",
+        "text": "Among the highlights was Google's commitment to advancing artificial intelligence, with new breakthroughs in machine learning and natural language processing. The company also shared its vision for a more connected world, with initiatives in the areas of internet infrastructure and global connectivity."
+      }
+    ]
+  }
+]
