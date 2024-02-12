@@ -13,10 +13,10 @@ const Navigation = () => {
       {/* Visible on Larger Screens */}
       <div className="hidden md:flex">
         <Link to="/" className="text-white mx-4">Home</Link>
-        <Link to="/about" className="text-white mx-4">Services</Link>
-        <Link to="/skills" className="text-white mx-4">Blogs</Link>
-        <Link to="/projects" className="text-white mx-4">Reviews</Link>
-        <Link to="/contact" className="text-white mx-4">Store</Link>
+        <Link to="/services" className="text-white mx-4">Services</Link>
+        <Link to="/blogs" className="text-white mx-4">Blogs</Link>
+        <Link to="/reviews" className="text-white mx-4">Reviews</Link>
+        <Link to="/store" className="text-white mx-4">Store</Link>
       </div>
 
       {/* Hamburger Menu for Small Screens */}

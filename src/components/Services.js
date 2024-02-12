@@ -31,10 +31,10 @@ const Services = () => {
 
   return (
     <div className="bg-gray-900 text-white p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16t">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
         {services.map((service, index) => (
           <div key={index} className="bg-gradient-to-b from-gray-800 via-gray-900 to-gray-900 rounded-lg p-6 mb-4">
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+            <h3 className="text-xl font-semibold mb-2 text-green-500">{service.title}</h3>
             <p className="text-gray-400 mb-4">{service.description}</p>
             {/* Additional content for each service panel */}
           </div>
@@ -43,7 +43,7 @@ const Services = () => {
 
       {/* Booking/Request Service Form */}
       <div className="bg-gradient-to-b from-gray-800 via-gray-900 to-gray-900 rounded-lg p-6 mt-8">
-        <h3 className="text-xl font-semibold mb-4">Book a Service</h3>
+        <h3 className="text-xl font-semibold mb-4 text-green-500">Book a Service</h3>
         <form onSubmit={() => handleServiceRequest(bookingForm.serviceName)}>
           <label className="block mb-4">
             <span className="text-gray-400">Service Name:</span>
@@ -52,7 +52,7 @@ const Services = () => {
               name="serviceName"
               value={bookingForm.serviceName}
               onChange={handleInputChange}
-              className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:border-blue-500"
+              className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:border-blue-500 text-gray-200"
             />
           </label>
           <label className="block mb-4">
@@ -61,7 +61,7 @@ const Services = () => {
               name="requestDescription"
               value={bookingForm.requestDescription}
               onChange={handleInputChange}
-              className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:border-blue-500"
+              className="mt-1 p-2 w-full rounded-md border border-gray-700 bg-gray-800 focus:outline-none focus:border-blue-500 text-gray-200"
             ></textarea>
           </label>
           <button

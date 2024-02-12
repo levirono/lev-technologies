@@ -71,5 +71,26 @@
         "text": "Among the highlights was Google's commitment to advancing artificial intelligence, with new breakthroughs in machine learning and natural language processing. The company also shared its vision for a more connected world, with initiatives in the areas of internet infrastructure and global connectivity."
       }
     ]
-  }
+  },
+  {
+    "id": 4,
+    "title": "Google's Groundbreaking Announcement: Shaping the Digital Landscape",
+    "date": "April 5, 2024",
+    "content": [
+      {
+        "type": "text",
+        "text": "Google made waves in the tech industry with its recent announcement, unveiling plans that will shape the digital landscape for years to come. The announcement, made on April 5, 2024, revealed ambitious projects and initiatives aimed at revolutionizing various aspects of technology."
+      },
+      {
+        "type": "image",
+        "src": "google_announcement.jpg",
+        "alt": "Google Announcement",
+        "caption": "Innovation at Google"
+      },
+      {
+        "type": "text",
+        "text": "Among the highlights was Google's commitment to advancing artificial intelligence, with new breakthroughs in machine learning and natural language processing. The company also shared its vision for a more connected world, with initiatives in the areas of internet infrastructure and global connectivity."
+      }
+    ]
+  } 
 ]

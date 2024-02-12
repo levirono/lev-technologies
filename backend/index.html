@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Portal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <div class="container mx-auto p-8">
+    <h1 class="text-2xl font-bold mb-4">Add a New Review</h1>
+    
+    <form id="reviewForm" class="bg-white p-4 rounded-md shadow-md">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-600">Name:</label>
+        <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md" required>
+      </div>
+      
+      <div class="mb-4">
+        <label for="images" class="block text-sm font-medium text-gray-600">Images (comma-separated):</label>
+        <input type="text" id="images" name="images" class="mt-1 p-2 w-full border rounded-md" required>
+      </div>
+
+      <!-- Categories -->
+      <div id="categoriesContainer" class="mb-4">
+        <!-- Material -->
+        <div class="categoryInput mb-2">
+          <label for="material" class="block text-sm font-medium text-gray-600">Material:</label>
+          <input type="text" name="categories.Material" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Width -->
+        <div class="categoryInput mb-2">
+          <label for="width" class="block text-sm font-medium text-gray-600">Width:</label>
+          <input type="text" name="categories.Width" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Resolution -->
+        <div class="categoryInput mb-2">
+          <label for="resolution" class="block text-sm font-medium text-gray-600">Resolution:</label>
+          <input type="text" name="categories.Resolution" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Technology -->
+        <div class="categoryInput mb-2">
+          <label for="technology" class="block text-sm font-medium text-gray-600">Technology:</label>
+          <input type="text" name="categories.Technology" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Platform -->
+        <div class="categoryInput mb-2">
+          <label for="os" class="block text-sm font-medium text-gray-600">OS:</label>
+          <input type="text" name="categories.Platform.OS" class="mt-1 p-2 w-full border rounded-md" required>
+
+          <label for="processor" class="block text-sm font-medium text-gray-600">Processor:</label>
+          <input type="text" name="categories.Platform.Processor" class="mt-1 p-2 w-full border rounded-md" required>
+
+          <label for="gpu" class="block text-sm font-medium text-gray-600">GPU:</label>
+          <input type="text" name="categories.Platform.GPU" class="mt-1 p-2 w-full border rounded-md" required>
+
+          <label for="ultra" class="block text-sm font-medium text-gray-600">Ultra:</label>
+          <input type="text" name="categories.Platform.ultra" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Cameras -->
+        <div class="categoryInput mb-2">
+          <label for="frontCamera" class="block text-sm font-medium text-gray-600">Front Camera:</label>
+          <input type="text" name="categories.Cameras.Front" class="mt-1 p-2 w-full border rounded-md" required>
+
+          <label for="rearCamera" class="block text-sm font-medium text-gray-600">Rear Camera:</label>
+          <input type="text" name="categories.Cameras.Rear" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Connections -->
+        <div class="categoryInput mb-2">
+          <label for="connections" class="block text-sm font-medium text-gray-600">Connections:</label>
+          <input type="text" name="categories.Connections" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Sensors -->
+        <div class="categoryInput mb-2">
+          <label for="sensors" class="block text-sm font-medium text-gray-600">Sensors:</label>
+          <input type="text" name="categories.Sensors" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Battery and Charging -->
+        <div class="categoryInput mb-2">
+          <label for="batteryCharging" class="block text-sm font-medium text-gray-600">Battery and Charging:</label>
+          <input type="text" name="categories['Battery and Charging']" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Color -->
+        <div class="categoryInput mb-2">
+          <label for="color" class="block text-sm font-medium text-gray-600">Color:</label>
+          <input type="text" name="categories.Color" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Price -->
+        <div class="categoryInput mb-2">
+          <label for="price" class="block text-sm font-medium text-gray-600">Price:</label>
+          <input type="text" name="categories.Price" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Misc -->
+        <div class="categoryInput mb-2">
+          <label for="dagger" class="block text-sm font-medium text-gray-600">Dagger:</label>
+          <input type="text" name="categories.misc.dagger" class="mt-1 p-2 w-full border rounded-md" required>
+
+          <label for="blunder" class="block text-sm font-medium text-gray-600">Blunder:</label>
+          <input type="text" name="categories.misc.blunder" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+
+        <!-- Alto -->
+        <div class="categoryInput mb-2">
+          <label for="altoLive" class="block text-sm font-medium text-gray-600">Alto Live:</label>
+          <input type="text" name="categories.alto.live" class="mt-1 p-2 w-full border rounded-md" required>
+        </div>
+      </div>
+      
+      <button type="button" id="addCategory" class="mb-2 px-4 py-2 bg-blue-500 text-white rounded-md">Add Category</button>
+      
+      <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded-md">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('reviewForm').addEventListener('submit', async function (event) {
+      event.preventDefault();
+    
+      const name = document.getElementById('name').value;
+      const images = document.getElementById('images').value.split(',');
+    
+      // Extract values for categories
+      const categories = {};
+      document.querySelectorAll('.categoryInput input').forEach(input => {
+        const categoryName = input.name;
+        const categoryValue = input.value;
+        setNestedValue(categories, categoryName, categoryValue);
+      });
+    
+      const response = await fetch('http://localhost:5000/api/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, images, categories }),
+      });
+    
+      if (response.ok) {
+        alert('Review added successfully!');
+      } else {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.message}`);
+      }
+    });
+    
+    // Function to set nested values in an object
+    function setNestedValue(obj, path, value) {
+      const keys = path.split('.');
+      let currentObj = obj;
+    
+      keys.forEach((key, index) => {
+        if (index === keys.length - 1) {
+          currentObj[key] = value;
+        } else {
+          currentObj[key] = currentObj[key] || {};
+          currentObj = currentObj[key];
+        }
+      });
+    }
+    
+    // Add Category button functionality
+    document.getElementById('addCategory').addEventListener('click', function () {
+      const categoriesContainer = document.getElementById('categoriesContainer');
+      const newCategoryInput = document.createElement('div');
+      newCategoryInput.classList.add('categoryInput', 'mb-2');
+      newCategoryInput.innerHTML = `
+        <label for="newCategory" class="block text-sm font-medium text-gray-600">New Category:</label>
+        <input type="text" name="categories.newCategory" class="mt-1 p-2 w-full border rounded-md" required>
+        <button type="button" class="mt-1 px-4 py-2 bg-red-500 text-white rounded-md removeCategory">Remove</button>
+      `;
+      categoriesContainer.appendChild(newCategoryInput);
+    });
+    
+    // Remove Category button functionality
+    document.getElementById('reviewForm').addEventListener('click', function (event) {
+      if (event.target.classList.contains('removeCategory')) {
+        event.target.parentElement.remove();
+      }
+    });
+    
+  </script>
+
+</body>
+</html>

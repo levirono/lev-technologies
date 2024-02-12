@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageSlider from './ImageSlider'; // Adjust the path based on your directory structure
 
 const featuresData = [
   {
@@ -12,11 +13,21 @@ const featuresData = [
 
 const Home = () => {
   return (
-    <div className="bg-gray-900 text-white">
+<div className="relative bg-gradient-to-r from-gray-800 to-gray-500 text-white overflow-hidden">
+      {/* Background Animation */}
+      <div
+        className="absolute top-0 left-0 w-full h-full z-0 animate-background"
+        style={{
+          animation: 'backgroundAnimation 5s infinite', // Adjust duration (20s) as needed
+        }}
+      ></div>
+
       {/* Hero Section */}
-      <section className="bg-cover bg-center h-screen flex items-center">
+      <section className="bg-cover bg-center h-screen flex items-center relative z-10">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-4">Welcome to Lev Technologies</h1>
+        <h1 className="text-4xl lg:text-6xl font-bold mb-4 text-green-600 relative" style={{ textShadow: '0 0 4px rgba(0, 255, 0, 0.8), 0 0 8px rgba(0, 255, 0, 0.5), 0 0 12px rgba(0, 255, 0, 0.3)' }}>
+  Welcome to Lev Technologies
+</h1>
           <p className="text-lg lg:text-xl mb-8">
             Your Gateway to Cutting-edge Technology
           </p>
@@ -32,97 +43,58 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section id="products" className="py-16">
+      {/* Image Slider Section */}
+      <section className="py-16 relative z-10">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8">Featured Products</h2>
-          {/* Product Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Product Card 1 */}
-            <div className="bg-gray-900 rounded-lg p-30">
-              <img src="/images/product1.jpg" alt="Product 1" className="w-full h-48 object-cover mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Product 1</h3>
-              <p className="text-gray-600 mb-4">Description of Product 1.</p>
-              <a href="#product1" className="text-blue-500 hover:underline">Learn More</a>
-            </div>
-            {/* Repeat similar structure for other product cards */}
-          </div>
+          <ImageSlider />
+        </div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section id="products" className="py-16 relative z-10">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-8">our engagement</h2>
+          {/* ... (rest of your featured products section) */}
         </div>
       </section>
 
       {/* Dynamic Features Section */}
-      <section id="dynamic-features" className="py-16">
+      <section id="dynamic-features" className="py-16 relative z-10">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-8">Get a tour</h2>
-          {/* Dynamic Feature Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuresData.map((feature, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-30">
-                {feature.imageSrc && (
-                  <img src={feature.imageSrc} alt={feature.title} className="w-full h-48 object-cover mb-4" />
-                )}
-                {feature.videoSrc && (
-                  <video controls className="w-full h-48 mb-4">
-                    <source src={feature.videoSrc} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                )}
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600 mb-4">{feature.description}</p>
-                <a href={`#${feature.title.toLowerCase().replace(/\s/g, '-')}`} className="text-blue-500 hover:underline">
-                  Learn More
-                </a>
-              </div>
-            ))}
-          </div>
+          {/* ... (rest of your dynamic features section) */}
         </div>
       </section>
 
       {/* Best Things Offered Section */}
-<section id="best-things" className="py-16 bg-gray-800 text-white">
-  <div className="container mx-auto text-center">
-    <h2 className="text-3xl lg:text-4xl font-bold mb-8">our products</h2>
-
-    {/* Zigzag arrangement of paragraphs and images */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-      {/* Paragraph and Image 1 (Right) */}
-      <div className="flex flex-col items-center md:order-1 lg:order-1">
-        <p className="text-lg lg:text-xl mb-4">
-          Header for Paragraph 1
-        </p>
-        <img src="/images/image1.jpg" alt="Image 1" className="w-full h-48 object-cover mb-4" />
-      </div>
-
-      {/* Paragraph and Image 2 (Left) */}
-      <div className="flex flex-col items-center md:order-2 lg:order-2">
-        <p className="text-lg lg:text-xl mb-4">
-          Header for Paragraph 2
-        </p>
-        <img src="/images/image2.jpg" alt="Image 2" className="w-full h-48 object-cover mb-4" />
-      </div>
-
-      {/* Paragraph and Image 3 (Right) */}
-      <div className="flex flex-col items-center md:order-1 lg:order-1">
-        <p className="text-lg lg:text-xl mb-4">
-          Header for Paragraph 3
-        </p>
-        <img src="/images/image3.jpg" alt="Image 3" className="w-full h-48 object-cover mb-4" />
-      </div>
-
-      {/* Repeat the pattern for additional paragraphs and images */}
-    </div>
-  </div>
-</section>
-      {/* Reviews and Blogs Section (Imported from different components) */}
-      {/* <ReviewsSection /> */}
-      {/* <BlogsSection /> */}
+      <section id="best-things" className="py-16 bg-gray-800 text-white relative z-10">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-8">our products</h2>
+          {/* ... (rest of your best things section) */}
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-8">
-        <div className="container mx-auto text-center">
-          <p>&copy; 2024 Lev Technologies. All rights reserved.</p>
-        </div>
-      </footer>
+  <div className="container mx-auto text-center">
+    <h2 className="text-3xl lg:text-4xl font-bold mb-8">Reach Us</h2>
+    {/* Social Media Section */}
+    <div className="flex justify-center space-x-4 mb-4">
+      <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer">
+        <img src="x.png" alt="Twitter" className="w-6 h-6" />
+      </a>
+      <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
+        <img src="facebook.png" alt="Facebook" className="w-6 h-6" />
+      </a>
+      <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">
+        <img src="Instagram.png" alt="Twitter" className="w-6 h-6" />
+      </a>
+      <a href="https://mail.google.com/ronolawi3@gmail.com" target="_blank" rel="noopener noreferrer">
+        <img src="youtube.png" alt="Twitter" className="w-6 h-6" />
+      </a>    </div>
+    <p>&copy; 2024 Lev Technologies. All rights reserved.</p>
+  </div>
+</footer>
     </div>
   );
 };
