@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Navigate } from 'react-router-dom';  // Assuming you use React Router for navigation
 import Modal from 'react-modal';
-import FullReview from './FullReview';
+import { useNavigate } from 'react-router-dom';
 
 const Reviews = () => {
+  const Navigate=useNavigate()
   const [reviews, setReviews] = useState([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,15 +25,12 @@ const Reviews = () => {
     fetchData();
   }, []);
 
-  let selectedDevice = null;
-
-  if (selectedDeviceId) {
-    selectedDevice = reviews.find((device) => device._id === selectedDeviceId);
-  }
-
   const openModal = (deviceId) => {
-    setSelectedDeviceId(deviceId);
-    setIsModalOpen(true);
+    console.log(deviceId);
+    Navigate(`/reviews/${deviceId}`)
+
+    // setSelectedDeviceId(deviceId);
+    // setIsModalOpen(true);
   };
 
   const closeModal = () => {
@@ -103,7 +102,11 @@ const Reviews = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        {selectedDevice && <FullReview device={selectedDevice} closeModal={closeModal} />}
+        {selectedDeviceId && (
+          <Link to={`/reviews/${selectedDeviceId}`} onClick={closeModal}>
+            View Full Review
+          </Link>
+        )}
       </Modal>
     </div>
   );

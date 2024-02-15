@@ -59,7 +59,7 @@ mongoose.connect(dbURI, {
     app.get('/', (req, res) => {
       res.sendFile(__dirname + '/index.html');
     });
-
+  
     app.get('/api/reviews', async (req, res) => {
       try {
         const reviewList = await Review.find().lean().select('-__v'); // Exclude __v field
@@ -69,6 +69,23 @@ mongoose.connect(dbURI, {
         res.status(500).json({ message: error.message });
       }
     });
+    app.get('/api/reviews/:deviceId', async (req, res) => {
+      // Extract the device ID from the request parameters
+      const _id = req.params.deviceId;
+      // console.log(deviceId); // Log the device ID to the console
+    
+      try {
+        // Attempt to find reviews associated with the specified device ID
+        const reviewList = await Review.findOne({ _id }).lean().select('-__v');
+        // Respond with the review list in JSON format, excluding the __v field
+        res.json(reviewList);
+        console.log(reviewList); // Log the retrieved review list to the console 
+      } catch (error) {
+        // If an error occurs during the database query, respond with a 500 status and an error message
+        res.status(500).json({ message: error.message });
+      }
+    });
+    
 
     app.post('/api/reviews', async (req, res) => {
       const { name, images, categories } = req.body;

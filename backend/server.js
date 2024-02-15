@@ -51,6 +51,23 @@ mongoose.connect(dbURI, {
       }
     });
 
+    app.get('/api/blogs/:blogId', async (req, res) => {
+      const _id = req.params.blogId;
+      console.log(_id);
+    
+      try {
+        // const reviewList = await Review.findOne({ _id }).lean().select('-__v');
+        const blog = await Blog.findOne({ _id }).lean().select('-__v');
+        res.json(blog);
+        console.log(blog); 
+      } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: error.message });
+      }
+    });
+    
+    
+
     // New route for creating a blog
     app.post('/api/write-blog', async (req, res) => {
       const { title, content } = req.body;

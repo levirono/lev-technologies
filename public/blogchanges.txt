@@ -1,0 +1,249 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+const Blogs = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    // Fetch blogs from the server when the component mounts
+    fetch('http://localhost:3001/api/blogs', {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch blogs - ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setBlogs(data);
+      })
+      .catch((error) => console.error('Error fetching blogs:', error));
+  }, []);
+
+  return (
+    <div className="bg-green-50 py-8">
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-semibold mb-6 text-green-800">Top Stories</h2>
+
+        {blogs.map((blog, index) => (
+          <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-6 border-green-500 border-4">
+            <h3 className="text-xl font-semibold mb-2 text-green-800">{blog.title}</h3>
+            <p className="text-gray-600 mb-2 font-serif">{blog.date}</p>
+            {/* Link to the individual blog page */}
+            <Link to={`/blogs/${index}`}>
+              <button className="bg-green-500 text-white px-4 py-2 rounded-md">Read More</button>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Blogs;
+
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const FullBlogView = ({ blogId, onClose }) => {
+  const [blog, setBlog] = useState(null);
+  const navigate = useNavigate(); // Use useNavigate for navigation
+
+  useEffect(() => {
+    if (blogId) {
+      // Fetch the blog based on the ID when the component mounts
+      fetch(`http://localhost:3001/api/blogs/${blogId}`, {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to fetch blog - ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setBlog(data[0]); // Assuming the response is an array with a single blog
+        })
+        .catch((error) => console.error('Error fetching blog:', error));
+    }
+  }, [blogId]);
+
+  if (!blog) {
+    return null;
+  }
+
+  return (
+    <div>
+      <button
+        className="text-blue-500 hover:underline cursor-pointer"
+        onClick={() => navigate('/')} // Use navigate to go back to the blog list
+      >
+        Back to Blog List
+      </button>
+
+      <div className="bg-green-50 rounded-lg shadow-md p-6 pb-12 mb-6 relative">
+        <h3 className="text-3xl font-semibold mb-4 text-green-800">{blog.title}</h3>
+        <p className="text-gray-600 mb-4 font-serif">{blog.date}</p>
+        <div className="text-gray-700">
+          {blog.content.map((item, itemIndex) => (
+            <React.Fragment key={itemIndex}>
+              {item.type === 'text' && (
+                <p className="mb-4">
+                  <span className="drop-cap text-3xl font-bold text-green-800">
+                    {item.text[0]}
+                  </span>
+                  {item.text.slice(1)}
+                </p>
+              )}
+              {item.type === 'image' && (
+                <div>
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full sm:w-1/2 object-cover rounded-md mt-4"
+                  />
+                  <p className="text-gray-500 text-sm mt-2">{item.caption}</p>
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FullBlogView;
+
+
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(express.json());
+app.use(cors());
+
+const dbURI = 'mongodb+srv://levt:trylevi@cluster0.9lhuoyr.mongodb.net/levt';
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+
+    const { ObjectId } = require('mongoose').Types; // Import ObjectId from mongoose
+
+    // Define the blog schema and model
+    const blogSchema = new mongoose.Schema({
+      title: { type: String, required: true },
+      date: { type: String },
+      content: [{
+        type: { type: String, enum: ['text', 'image'], required: true },
+        text: { type: String },
+        src: { type: String },
+        alt: { type: String },
+        caption: { type: String },
+      }],
+    });
+
+    const Blog = mongoose.model('Blog', blogSchema);
+
+    app.get('/', (req, res) => {
+      res.send("This is the homepage of my server");
+    });
+
+    // Serve HTML file
+    app.get('/write-blog', (req, res) => {
+      res.sendFile(path.join(__dirname, 'write-blog.html'));
+    });
+
+    // Routes
+    app.get('/api/blogs', async (req, res) => {
+      try {
+        const blogs = await Blog.find();
+        res.json(blogs);
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+    });
+
+    // New route to get a single blog by ID
+    app.get('/api/blogs/:blogId', async (req, res) => {
+      const blogId = req.params.blogId;
+
+      // Validate that the provided ID is a valid ObjectId
+      if (!ObjectId.isValid(blogId)) {
+        return res.status(400).json({ message: 'Invalid blog ID' });
+      }
+
+      try {
+        const blog = await Blog.findById(blogId);
+
+        if (!blog) {
+          return res.status(404).json({ message: 'Blog not found' });
+        }
+
+        res.json([blog]); // Sending as an array for consistency with existing code
+      } catch (error) {
+        res.status(500).json({ message: error.message });
+      }
+    });
+
+    // New route for creating a blog
+    app.post('/api/write-blog', async (req, res) => {
+      const { title, content } = req.body;
+
+      // Validate that content is an array
+      if (!Array.isArray(content)) {
+        return res.status(400).json({ message: 'Content must be an array' });
+      }
+
+      const newBlog = new Blog({
+        title,
+        date: new Date().toISOString(),
+        content: content.map(item => {
+          // Validate item type
+          if (!item.type || !['text', 'image'].includes(item.type)) {
+            return res.status(400).json({ message: 'Invalid content type' });
+          }
+
+          // Depending on the content type, include relevant fields
+          if (item.type === 'text') {
+            return {
+              type: 'text',
+              text: item.text || '',
+            };
+          } else if (item.type === 'image') {
+            return {
+              type: 'image',
+              src: item.src || '',
+              alt: item.alt || '',
+              caption: item.caption || '', 
+            };
+          }
+        }),
+      });
+
+      try {
+        const savedBlog = await newBlog.save();
+        res.status(201).json(savedBlog);
+      } catch (error) {
+        res.status(400).json({ message: error.message });
+      }
+    });
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error.message);
+  });

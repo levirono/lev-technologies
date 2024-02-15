@@ -1,31 +1,52 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const FullReview = ({ device, closeModal }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const FullReview = () => {
+  const [device, setDevice] = useState(null);
+  const { deviceId } = useParams();
+  console.log(deviceId);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-    console.log('FullReview: Modal opened for device:', device);
-  };
+  useEffect(() => {
+    const fetchDevice = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/reviews/${deviceId}`);
+        // console.log(response);
+        // const response = await fetch(`http://localhost:5000/api/reviews/${deviceId}`);
+        const data = await response.json();
+        console.log('Fetched Device Data:', data);
+        setDevice(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  const closeModalInternal = () => {
-    setIsModalOpen(false);
-    console.log('FullReview: Modal closed for device:', device);
-  };
+    fetchDevice();
+  }, [deviceId]);
 
+  if (!device) {
+    return <div>Loading...</div>; // You might want to show a loading state while fetching data
+  }
+console.log(device?.images[0]);
   return (
     <div className="container mx-auto mt-8">
+    <h1>Full Review</h1>
       {/* Display full details of the selected device */}
       <h2 className="text-2xl font-bold text-green-800">{device.name}</h2>
       {device.images.length > 0 && (
-        <img
-          src={device.images[0]}
-          alt={`${device.name} Main Image`}
-          className="mt-4 rounded-md shadow-md w-full max-w-lg mx-auto cursor-pointer"
-          onClick={openModal}
-        />
-      )}
+  (() => {
+    const imageUrl = `/${device.images[0]}`; // Adjust as needed
+    console.log('Image URL:', imageUrl);
+
+    return (
+      <img
+        src={imageUrl}
+        alt={`${device.name} Main Image`}
+        className="mt-4 rounded-md shadow-md w-full max-w-lg mx-auto cursor-pointer"
+      />
+    );
+  })()
+)}
+
 
       {/* Render categories and other details here */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -63,31 +84,25 @@ const FullReview = ({ device, closeModal }) => {
         />
       </div>
 
-      {/* Modal for additional images */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModalInternal}
-        contentLabel="Additional Images Modal"
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg outline-none w-full h-full overflow-y-auto"
-      >
-        <button className="absolute top-2 right-2 text-green-800 hover:text-green-900 focus:outline-none" onClick={closeModalInternal}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-        <h2 className="text-2xl font-bold mb-4 text-green-800">{device.name} - Additional Images</h2>
+      {/* Additional Images */}
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold mb-3 text-green-800">Additional Images</h3>
         <div className="flex justify-center items-center flex-wrap">
-          {device.images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`${device.name} Image ${index + 1}`}
-              className="w-auto h-auto sm:w-auto sm:h-auto md:w-auto md:h-auto object-cover rounded-md m-2 cursor-pointer"
-              onClick={() => closeModalInternal()}
-            />
-          ))}
+        {device.images.map((image, index) => {
+  const imageUrl = `/${image}`; // Adjust as needed
+  console.log('Image URL:', imageUrl);
+
+  return (
+    <img
+      key={index}
+      src={imageUrl}
+      alt={`${device.name} Image ${index + 1}`}
+      className="w-auto h-auto sm:w-auto sm:h-auto md:w-auto md:h-auto object-cover rounded-md m-2 cursor-pointer"
+    />
+  );
+})}
         </div>
-      </Modal>
+      </div>
     </div>
   );
 };

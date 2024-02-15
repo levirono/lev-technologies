@@ -7,6 +7,9 @@ import Reviews from './components/Reviews';
 import Store from './components/Store';
 import Navigation from './components/Navigation';
 import FullBlogView from './components/FullBlogView';
+import BlogReader from './components/BlogReader';
+
+import FullReview from './components/FullReview';  // Import the FullReview component
 
 const App = () => {
   return (
@@ -15,10 +18,15 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
-        {/* Route for the FullBlogView component */}
-        <Route path="/blogs/:blogId" element={<FullBlogViewPage />} />
+        <Route path="/blogs/:blogId" element={<FullBlogView />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/blog/:blogId" element={<BlogReader />} />
+
+
+        {/* Add route for FullReview component */}
+        <Route path="/reviews/:deviceId" element={<FullReview />} />
+
         <Route path="/store" element={<Store />} />
       </Routes>
     </Router>
@@ -53,6 +61,36 @@ const FullBlogViewPage = ({ params }) => {
 
   // Render FullBlogView with the fetched data
   return <FullBlogView blog={blogData} isExpanded={true} onClose={() => {}} />;
+};
+
+// Define FullReviewPage component to fetch review data and pass it to FullReview
+const FullReviewPage = ({ params }) => {
+  const deviceId = params.deviceId;
+
+  // Fetch review data based on deviceId
+  // You should implement your own fetch logic here
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/reviews/${deviceId}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching review data:', error);
+    }
+  };
+
+  // Use a state to store the review data
+  const [reviewData, setReviewData] = React.useState(null);
+
+  // Fetch the data when the component mounts
+  React.useEffect(() => {
+    fetchData().then((data) => {
+      setReviewData(data);
+    });
+  }, [deviceId]);
+
+  // Render FullReview with the fetched data
+  return <FullReview device={reviewData} />;
 };
 
 export default App;
